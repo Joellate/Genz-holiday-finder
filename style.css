@@ -1,82 +1,120 @@
 body {
-	    font-family: sans-serif;
-	        margin: 20px;
-		    background-color: #f4f4f4;
-		        color: #333;
-		}
-
-		header {
-			    text-align: center;
-			        padding: 20px 0;
-				    background-color: #e0f7fa;
-				        border-bottom: 2px solid #b2ebf2;
+	    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	        margin: 0;
+		    background-color: #f8f9fa; /* Light gray background */
+		        color: #495057; /* Dark gray text */
+			    line-height: 1.6;
+			        display: flex;
+				    flex-direction: column;
+				        min-height: 100vh;
 				}
 
-				main {
-					    margin-top: 20px;
-					        padding: 20px;
-						    background-color: #fff;
-						        border-radius: 8px;
-							    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-						    }
+				header {
+					    background-color: #007bff; /* Primary blue */
+					        color: white;
+						    text-align: center;
+						        padding: 2rem 0;
+							    margin-bottom: 2rem;
+							        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+							}
 
-						    .input-area label {
-							        display: block;
-								    margin-bottom: 5px;
-								        font-weight: bold;
+							header h1 {
+								    font-size: 2.5rem;
+								        margin-bottom: 0.5rem;
 								}
 
-								.input-area input[type="text"],
-								.input-area input[type="number"] {
-									    width: calc(100% - 12px);
-									        padding: 8px;
-										    margin-bottom: 15px;
-										        border: 1px solid #ccc;
-											    border-radius: 4px;
-											        box-sizing: border-box;
-											}
+								header p {
+									    font-size: 1.1rem;
+									        opacity: 0.8;
+									}
 
-											button#searchButton {
-												    display: block;
-												        width: 100%;
-													    padding: 10px;
-													        background-color: #00bcd4;
-														    color: white;
-														        border: none;
-															    border-radius: 4px;
-															        cursor: pointer;
-																    font-size: 16px;
-																        transition: background-color 0.3s ease;
+									main {
+										    flex-grow: 1;
+										        padding: 2rem;
+											    background-color: #fff;
+											        border-radius: 8px;
+												    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+												        margin: 20px auto;
+													    max-width: 600px;
+												    }
+
+												    .input-area {
+													        display: flex;
+														    flex-direction: column;
+														        margin-bottom: 2rem;
+														}
+
+														.input-area label {
+															    display: block;
+															        margin-bottom: 0.5rem;
+																    font-weight: bold;
+																        color: #343a40; /* Darker text for labels */
 																}
 
-																button#searchButton:hover {
-																	    background-color: #008ba7;
-																    }
-
-																    .results {
-																	        margin-top: 20px;
-																		    padding: 15px;
-																		        border: 1px solid #ddd;
-																			    border-radius: 4px;
-																			        background-color: #f9f9f9;
+																.input-area input[type="text"],
+																.input-area input[type="number"] {
+																	    padding: 0.75rem;
+																	        margin-bottom: 1rem;
+																		    border: 1px solid #ced4da;
+																		        border-radius: 4px;
+																			    box-sizing: border-box;
+																			        font-size: 1rem;
 																			}
 
-																			.results h2 {
-																				    margin-top: 0;
-																				        color: #00bcd4;
-																				}
-
-																				.holiday-item {
-																					    padding: 8px 0;
-																					        border-bottom: 1px dashed #eee;
-																					}
-
-																					.holiday-item:last-child {
-																						    border-bottom: none;
-																					    }
-
-																					    footer {
-																						        text-align: center;
-																							    margin-top: 20px;
-																							        color: #777;
+																			button#searchButton {
+																				    background-color: #28a745; /* Success green */
+																				        color: white;
+																					    border: none;
+																					        border-radius: 6px;
+																						    padding: 1rem 1.5rem;
+																						        cursor: pointer;
+																							    font-size: 1.1rem;
+																							        transition: background-color 0.2s ease-in-out;
 																							}
+
+																							button#searchButton:hover {
+																								    background-color: #218838;
+																							    }
+
+																							    #results-area {
+																								        margin-top: 2rem;
+																									    padding: 1.5rem;
+																									        background-color: #e9ecef; /* Light gray for results */
+																										    border-radius: 6px;
+																										        border: 1px solid #dee2e6;
+																										}
+
+																										#results-area h2 {
+																											    color: #007bff; /* Primary blue for results heading */
+																											        margin-top: 0;
+																												    margin-bottom: 1rem;
+																												        border-bottom: 2px solid #007bff;
+																													    padding-bottom: 0.5rem;
+																												    }
+
+																												    #results-area ul {
+																													        list-style: none;
+																														    padding: 0;
+																													    }
+
+																													    #results-area li.holiday-item {
+																														        padding: 0.75rem 0;
+																															    border-bottom: 1px solid #ddd;
+																														    }
+
+																														    #results-area li.holiday-item:last-child {
+																															        border-bottom: none;
+																															}
+
+																															#results-area p.error {
+																																    color: #dc3545; /* Danger red for errors */
+																																        font-weight: bold;
+																																}
+
+																																footer {
+																																	    text-align: center;
+																																	        padding: 1rem 0;
+																																		    margin-top: 2rem;
+																																		        color: #6c757d; /* Secondary gray for footer */
+																																			    border-top: 1px solid #dee2e6;
+																																		    }
