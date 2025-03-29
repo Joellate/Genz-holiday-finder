@@ -26,11 +26,11 @@ To deploy this web application to the provided servers Web01 and Web02 with a lo
 
 1.  **Transfer Files:** The `index.html`, `style.css`, and `script.js` files would be transferred to both Web01 and Web02. This could be done using tools like `scp` or `rsync`.
 2.  **Web Server Configuration:** A web server (such as Nginx or Apache) would need to be installed and configured on both Web01 and Web02 to serve these static files. The web server would be set to listen on standard HTTP port 80 (or HTTPS port 443 if SSL is configured).
-3.  **Load Balancer Configuration (Lb01):** The load balancer Lb01 would be configured to distribute incoming HTTP (or HTTPS) traffic across the IP addresses of Web01 and Web02. This would typically involve:
-    * Defining the backend servers (Web01 and Web02 with their respective IP addresses and ports).
-    * Setting up a load balancing algorithm (e.g., round-robin, least connections).
-    * Configuring health checks to ensure traffic is only directed to healthy servers.
-    * Pointing the application's domain name to the IP address of the load balancer.
+3.  **Configure Load Balancer (Lb01 - IP: 52.87.163.802):** The load balancer would be configured to direct traffic to the backend servers:
+    * **Web01:** 44.202.1.224 (listening on port 80)
+    * **Web02:** 3.91.57.170 (listening on port 80)
+    ##Demo video
+    <video controls src="Trendy Holiday Vibes - Personal - Microsoft​ Edge 2025-03-29 20-06-14.mp4" title="Title"></video>
 
 ## Author
 
