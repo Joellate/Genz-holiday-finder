@@ -24,31 +24,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                return response.json();
+                return response.text(); // Get the response as text first
             })
-            .then(holidays => {
-                resultsArea.innerHTML = '';
-                if (holidays && holidays.length > 0) {
-                    const holidaysList = document.createElement('ul');
-                    holidays.forEach(holiday => {
-                        const listItem = document.createElement('li');
-                        listItem.classList.add('holiday-item');
-                        listItem.textContent = `${holiday.date}: ${holiday.localName}`;
-                        holidaysList.appendChild(listItem);
-                    });
-                    const heading = document.createElement('h2');
-                    heading.textContent = `Holidays in ${countryCode} for ${searchYear}`;
-                    resultsArea.appendChild(heading);
-                    resultsArea.appendChild(holidaysList);
-                } else {
-                    resultsArea.innerHTML = `<p>No public holidays found for ${countryCode} in ${searchYear}.</p>`;
+            .then(responseText => {
+                try {
+                    const holidays = JSON.parse(responseText); // Try to parse as JSON
+                    resultsArea.innerHTML = '';
+                    if (holidays && holidays.length > 0) {
+                        const holidaysList = document.createElement('ul');
+                        holidays.forEach(holiday => {
+                            const listItem = document.createElement('li');
+                            listItem.classList.add('holiday-item');
+                            listItem.textContent = `${holiday.date}: ${holiday.localName}`;
+                            holidaysList.appendChild(listItem);
+                        });
+                        const heading = document.createElement('h2');
+                        heading.textContent = `Holidays in ${countryCode} for ${searchYear}`;
+                        resultsArea.appendChild(heading);
+                        resultsArea.appendChild(holidaysList);
+                    } else {
+                        resultsArea.innerHTML = `<p>No public holidays found for ${countryCode} in ${searchYear}.</p>`;
+                    }
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                    resultsArea.innerHTML = `<p class="error">Error processing holiday data for ${countryCode}.</p>`;
+                    // Optionally, log the raw responseText to the console for debugging
+                    console.log("Raw API Response:", responseText);
                 }
             })
             .catch(error => {
+                console.error("Error fetching holidays:", error);
                 resultsArea.innerHTML = `<p class="error">Error fetching holidays: ${error.message}</p>`;
             });
     });
 
-    // Set the default year to the current year when the page loads
     yearInput.value = new Date().getFullYear();
 });
